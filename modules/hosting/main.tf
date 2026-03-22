@@ -20,7 +20,7 @@ data "netlify_site" "this" {
 
 resource "netlify_site_build_settings" "this" {
   site_id           = data.netlify_site.this.id
-  build_command     = "pnpm build"
+  build_command     = "pnpm db:migrate && pnpm build"
   production_branch = "main"
   publish_directory = "dist"
 }
