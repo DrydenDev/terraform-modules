@@ -17,10 +17,9 @@ data "cloudflare_zone" "this" {
   name = var.domain
 }
 
-# music subdomain → Netlify
-resource "cloudflare_record" "music" {
+resource "cloudflare_record" "this" {
   zone_id = data.cloudflare_zone.this.id
-  name    = "music"
+  name    = var.subdomain
   type    = "CNAME"
   content = "${var.netlify_subdomain}.netlify.app"
   ttl     = 1    # 1 = "Auto" in Cloudflare

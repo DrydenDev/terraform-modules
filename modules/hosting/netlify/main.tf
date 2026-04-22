@@ -20,14 +20,14 @@ data "netlify_site" "this" {
 
 resource "netlify_site_build_settings" "this" {
   site_id           = data.netlify_site.this.id
-  build_command     = "pnpm db:migrate && pnpm build"
+  build_command     = var.build_command
   production_branch = "main"
-  publish_directory = "dist"
+  publish_directory = var.publish_directory
 }
 
 resource "netlify_site_domain_settings" "this" {
   site_id       = data.netlify_site.this.id
-  custom_domain = "music.${var.domain}"
+  custom_domain = "${var.subdomain}.${var.domain}"
 }
 
 # Deploy key for GitHub integration — add the public key to the repo's

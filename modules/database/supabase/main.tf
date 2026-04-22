@@ -28,10 +28,10 @@ resource "supabase_settings" "auth" {
 
   auth = jsonencode({
     site_url                = var.site_url
-    additional_redirect_urls = [
-      "${var.site_url}/auth/callback",
-      "http://localhost:4321/auth/callback",
-    ]
+    additional_redirect_urls = concat(
+      ["${var.site_url}/auth/callback"],
+      var.local_redirect_urls,
+    )
     external_google_enabled       = true
     external_google_client_id     = var.google_oauth_client_id
     external_google_secret        = var.google_oauth_client_secret

@@ -42,3 +42,9 @@ variable "site_url" {
   description = "The production app URL — used by Supabase Auth for redirects"
   type        = string
 }
+
+variable "local_redirect_urls" {
+  description = "Additional OAuth redirect URLs for local development (e.g. ['http://localhost:4321/auth/callback'])"
+  type        = list(string)
+  default     = []
+}

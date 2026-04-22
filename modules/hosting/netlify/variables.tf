@@ -5,7 +5,22 @@ variable "netlify_token" {
 }
 
 variable "domain" {
-  description = "Custom domain to attach to the Netlify site"
+  description = "Root domain to attach to the Netlify site (e.g. example.com)"
+  type        = string
+}
+
+variable "subdomain" {
+  description = "Subdomain prefix for the custom domain (e.g. 'music' → music.example.com)"
+  type        = string
+}
+
+variable "build_command" {
+  description = "Build command to run on Netlify (e.g. 'pnpm build')"
+  type        = string
+}
+
+variable "publish_directory" {
+  description = "Directory containing the built site to publish (e.g. 'dist')"
   type        = string
 }
 
