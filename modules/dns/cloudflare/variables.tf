@@ -14,8 +14,14 @@ variable "subdomain" {
   type        = string
 }
 
-variable "netlify_subdomain" {
-  description = "The *.netlify.app subdomain assigned to your Netlify site (without .netlify.app)"
+variable "cname_target" {
+  description = "Full CNAME target value (e.g. 'music-ratings.netlify.app' or 'username.github.io')"
   type        = string
+}
+
+variable "proxied" {
+  description = "Route traffic through Cloudflare proxy (DDoS protection, analytics). Set to false for GitHub Pages, which manages its own SSL."
+  type        = bool
+  default     = true
 }
 

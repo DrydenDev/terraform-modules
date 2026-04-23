@@ -21,7 +21,7 @@ resource "cloudflare_record" "this" {
   zone_id = data.cloudflare_zone.this.id
   name    = var.subdomain
   type    = "CNAME"
-  content = "${var.netlify_subdomain}.netlify.app"
-  ttl     = 1    # 1 = "Auto" in Cloudflare
-  proxied = true # traffic routes through Cloudflare (DDoS protection, analytics)
+  content = var.cname_target
+  ttl     = 1 # 1 = "Auto" in Cloudflare
+  proxied = var.proxied
 }
